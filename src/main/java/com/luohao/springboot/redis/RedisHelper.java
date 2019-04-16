@@ -49,6 +49,7 @@ public interface RedisHelper<HK, T> {
 
     /**
      * 对象的实体类
+     *
      * @param key
      * @param domain
      * @return
@@ -57,6 +58,7 @@ public interface RedisHelper<HK, T> {
 
     /**
      * 获取对象实体类
+     *
      * @param key
      * @return
      */
@@ -68,4 +70,14 @@ public interface RedisHelper<HK, T> {
      * 设置过期时间 * @param key 键 * @param timeout 时间 * @param timeUnit 时间单位
      */
     boolean expirse(String key, long timeout, TimeUnit timeUnit);
+
+
+    /**
+     * 如果key不存在，就存储一个key-value，相当于SETNX命令
+     *
+     * @param key   键
+     * @param value 值，可以为空
+     * @return
+     */
+    boolean setIfObsent(String key, T value);
 }

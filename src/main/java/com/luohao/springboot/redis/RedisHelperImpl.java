@@ -88,8 +88,18 @@ public class RedisHelperImpl<HK, T> implements RedisHelper<HK, T> {
         redisTemplate.delete(key);
     }
 
+    public boolean setIfObsent (String key, T value) {
+        return valueOperations.setIfAbsent(key, value);
+    }
+
+
     @Override
     public boolean expirse(String key, long timeout, TimeUnit timeUnit) {
         return redisTemplate.expire(key, timeout, timeUnit);
     }
+
+
+
+
+
 }
